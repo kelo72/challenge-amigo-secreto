@@ -20,7 +20,7 @@ function agregarAmigo(){
     actualizarListaAmigos();
 
     //Limpiamos el campo de entrada para el siguiente nombre
-    document.getElementById("amigo").value = "";
+    document.getElementById("amigo").value = '';
 }
 
 /**
@@ -29,7 +29,7 @@ function agregarAmigo(){
  */
 function actualizarListaAmigos() {
     let elementoLista = document.getElementById("listaAmigos");
-    //elementoLista.innerHTML = ''; //Limpia la lista actual para no duplicar nombres
+    elementoLista.innerHTML = ''; //Limpia la lista actual para no duplicar nombres
 
     for (let amigo of amigos) {
         let item = document.createElement('li'); //Crea un elemento <li>
@@ -38,3 +38,16 @@ function actualizarListaAmigos() {
     }
 }
 
+//Creamos la funcion sortearAmigo
+function sortearAmigo(){
+
+    //Desordenamos la lista de amigos (Algoritmo de Fisher-Yates)
+    let elejido = Math.floor(Math.random() * (amigos.length)); 
+        
+        if (elejido <= amigos.length){
+            sorteo= document.getElementById("resultado");
+            sorteo.innerHTML = 'El amigo secreto es ' + amigos[elejido] + '.';
+        }else{
+            alert('Primero debes ingresar los nombres')
+        }
+    }
